@@ -47,7 +47,7 @@ const UserForm = ({ addUser }) => {
         />
       </div>
       <div>
-        <label htmlFor="email">Email:</label>
+        <label htmlFor="email">Enter Email:</label>
         <input
           type="email"
           id="email"

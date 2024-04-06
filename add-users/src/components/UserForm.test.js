@@ -24,12 +24,14 @@ test("it calls addUser when the form is submitted", async () => {
   // Step-1: Render the Component to be tested
   render(<UserForm addUser={mock} />);
 
-  // Step 2: Manipulate the Component or Find elements in it
+  /** Find two inputs --- Use Label QueryFunction */
+  const nameInput = screen.getByRole("textbox", {
+    name: /Name:/i,
+  });
 
-  /** Find two inputs */
-  const [nameInput, emailInput] = screen.getAllByRole("textbox");
-
-  /* --- Within Step-2 we have sub-steps this time, We need to simulate what user is clicking and typing in the input fields --- */
+  const emailInput = screen.getByRole("textbox", {
+    name: /Enter email/i,
+  });
 
   /** Simulate typing in inputs */
   await user.click(nameInput);
