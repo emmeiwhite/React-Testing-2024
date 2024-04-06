@@ -1,0 +1,113 @@
+/* 1. UserForm Component */
+
+.container {
+  max-width: 992px;
+  margin: 0 auto;
+}
+/* Center the form */
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50px;
+}
+
+/* Style input fields */
+input[type="text"],
+input[type="email"] {
+  width: 300px;
+  padding: 10px;
+  margin: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+/* Style submit button */
+button[type="submit"] {
+  padding: 10px 20px;
+  margin-top: 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+/* Change button color on hover */
+button[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+/* Add margin to form fields */
+div {
+  margin-bottom: 20px;
+}
+
+/* Add margin to form heading */
+h1 {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* --- 2. UserList Component --- */
+
+.user-list {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  margin-top: 2rem;
+}
+
+.user-list h2 {
+  text-align: center;
+}
+/* Define the grid layout for the UserList */
+.user-list .user-grid {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(200px, 1fr)
+  ); /* Dynamically adjust column count */
+  gap: 20px; /* Add gap between grid items */
+  list-style: none; /* Remove default list styles */
+  padding: 0;
+}
+
+/* Style each grid item */
+.user-list .user-grid li {
+  background-color: #f0f0f0;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Style the User component within the grid item */
+.user-list .user-grid li > div {
+  /* Add any specific styles for the User component within the grid item */
+}
+
+/* --- 3. User Component --- */
+/* index.css */
+
+/* Style the User component */
+.user-list .user-grid li .user {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Style the user name */
+.user-list .user-grid li .user p:first-child {
+  font-weight: bold;
+}
+
+/* Style the user email */
+.user-list .user-grid li .user p:last-child {
+  color: #555555;
+}
