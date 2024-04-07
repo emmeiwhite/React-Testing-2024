@@ -54,7 +54,7 @@ h1 {
 /* --- 2. UserList Component --- */
 
 .user-list {
-  max-width: 600px;
+  max-width: 800px; /* Increase max-width for better table display */
   margin: 0 auto;
   padding: 20px;
   background-color: #ffffff;
@@ -66,29 +66,26 @@ h1 {
 .user-list h2 {
   text-align: center;
 }
-/* Define the grid layout for the UserList */
-.user-list .user-grid {
-  display: grid;
-  grid-template-columns: repeat(
-    auto-fill,
-    minmax(200px, 1fr)
-  ); /* Dynamically adjust column count */
-  gap: 20px; /* Add gap between grid items */
-  list-style: none; /* Remove default list styles */
-  padding: 0;
+
+/* Define styles for the user table */
+.user-list .user-table {
+  width: 100%; /* Ensure table takes full width of container */
+  border-collapse: collapse; /* Collapse table borders */
 }
 
-/* Style each grid item */
-.user-list .user-grid li {
-  background-color: #f0f0f0;
-  padding: 10px;
-  border-radius: 8px;
-  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+.user-list .user-table th,
+.user-list .user-table td {
+  padding: 10px; /* Add padding to table cells */
+  border: 1px solid #ddd; /* Add borders to table cells */
 }
 
-/* Style the User component within the grid item */
-.user-list .user-grid li > div {
-  /* Add any specific styles for the User component within the grid item */
+.user-list .user-table th {
+  background-color: #f2f2f2; /* Background color for table header */
+  text-align: left; /* Align text in table header */
+}
+
+.user-list .user-table tr:nth-child(even) {
+  background-color: #f9f9f9; /* Alternate row background color */
 }
 
 /* --- 3. User Component --- */
