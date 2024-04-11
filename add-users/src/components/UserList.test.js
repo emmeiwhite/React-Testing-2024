@@ -22,6 +22,8 @@ test("render one row per user", () => {
 
 --- */
 
+// Here we use the other solution - using within() function
+/* --
 test("render one row per user", () => {
   // render the component
   const users = [
@@ -34,5 +36,21 @@ test("render one row per user", () => {
   const rows = within(screen.getByTestId("users")).getAllByRole("row");
 
   // assertion
+  expect(rows).toHaveLength(2);
+});
+-- */
+
+// Method-3: Which is not recommended
+
+test("render one row per user", () => {
+  const users = [
+    { name: "jane", email: "jane@123.com" },
+    { name: "sam", email: "sam@123.com" },
+  ];
+  const { container } = render(<UserList users={users} />);
+
+  // eslint-disable-next-line
+  const rows = container.querySelectorAll("tbody tr");
+
   expect(rows).toHaveLength(2);
 });
