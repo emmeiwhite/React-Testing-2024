@@ -1,6 +1,8 @@
 import { screen, render, within } from "@testing-library/react";
 import UserList from "./UserList";
 
+import "@testing-library/jest-dom";
+
 /* --- This test fails because getAllByRole() is not always a solution for us
 test("render one row per user", () => {
   const users = [
@@ -59,13 +61,21 @@ test("render one row per user", () => {
 
 // Method 4
 
-test("render one row per user", () => {
-  // render the component
+/** --- Common Code to be put outside the test() definitions --- */
+
+function renderComponent() {
   const users = [
     { name: "jane", email: "jane@123.com" },
     { name: "sam", email: "sam@123.com" },
   ];
   render(<UserList users={users} />);
+
+  return { users };
+}
+
+test("render one row per user", () => {
+  // render the component
+  const { users } = renderComponent();
 
   // find elements | This un-fortunately didn't work
   // const [rowgroup1, rowgroup2] = screen.getAllByRole("rowgroup");
@@ -75,4 +85,20 @@ test("render one row per user", () => {
 
   const totalRows = within(screen.getByTestId("users")).getAllByRole("row");
   expect(totalRows).toHaveLength(2);
+});
+
+// Test email and name
+
+test("render the email and name of each user", () => {
+  const { users } = renderComponent();
+
+  for (let user of users) {
+    const name = screen.getByRole("cell", { name: user.name });
+    const email = screen.getByRole("cell", { name: user.email });
+
+    expect(name).toBeInTheDocument();
+    expect(email).toBeInTheDocument();
+  }
+
+  // screen.logTestingPlaygroundURL(); Very Helpful
 });
