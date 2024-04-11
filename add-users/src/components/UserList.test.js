@@ -42,6 +42,7 @@ test("render one row per user", () => {
 
 // Method-3: Which is not recommended
 
+/*--
 test("render one row per user", () => {
   const users = [
     { name: "jane", email: "jane@123.com" },
@@ -53,4 +54,25 @@ test("render one row per user", () => {
   const rows = container.querySelectorAll("tbody tr");
 
   expect(rows).toHaveLength(2);
+});
+--- */
+
+// Method 4
+
+test("render one row per user", () => {
+  // render the component
+  const users = [
+    { name: "jane", email: "jane@123.com" },
+    { name: "sam", email: "sam@123.com" },
+  ];
+  render(<UserList users={users} />);
+
+  // find elements | This un-fortunately didn't work
+  // const [rowgroup1, rowgroup2] = screen.getAllByRole("rowgroup");
+
+  // // eslint-disable-next-line
+  // const totalRows = rowgroup2.getAllByRole("row");
+
+  const totalRows = within(screen.getByTestId("users")).getAllByRole("row");
+  expect(totalRows).toHaveLength(2);
 });
